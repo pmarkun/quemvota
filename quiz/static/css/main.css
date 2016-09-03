@@ -1,12 +1,71 @@
+.jumbotron {
+	text-align:center;
+	background-image: url('../img/background.png');
+	color:#fff;
+}
+
+.jumbotron h1 {
+	border:15pt solid white;
+	width:470px;
+	height:135px;
+	line-height: -20pt;
+	margin:0 auto;
+}
+
+.bignumber { 
+	text-align: center;
+	font-size: 165px;
+}
+
+.ementa {
+	background-color: #0E2D40;
+	color:#FFF;
+	padding:22px;
+	font-size: 18px;
+}
 
 
+.controle {
+	margin-top:2em;
+	text-align: center;
+}
+
+.controle .btn {
+	width:92px;
+	height:92px;
+	background-repeat: no-repeat;
+}
+.btn-concordo {
+	background-image: url('../img/concordo.svg');
+}
+
+.btn-abstencao {
+	background-image: url('../img/abstencao.svg');
+}
+
+.btn-discordo {
+	background-image: url('../img/discordo.png');
+}
+
+.controle .label {
+	padding-top:92px;
+}
+footer {
+	text-align: center;
+}
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+@media only screen and (max-device-width: 480px) {
+	div#wrapper {
+		width: 400px;
+	}
 
-
-
+	.notmobile {
+		display:none;
+	}		
+}
 
 
 

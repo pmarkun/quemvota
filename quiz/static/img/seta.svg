@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ededed;
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        font-size: 18px;
+        fill: #fff;
+        font-family: Ubuntu;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  <circle id="Elipse_1" data-name="Elipse 1" class="cls-1" cx="37" cy="37" r="37"/>
+  <text id="v" class="cls-2" transform="translate(21.772 47.16) scale(2.405 1.133)">v</text>
+</svg>
