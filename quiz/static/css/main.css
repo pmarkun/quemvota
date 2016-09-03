@@ -1,20 +1,54 @@
+body {
+	font-family: Ubuntu;
+}
+
 .jumbotron {
+	height: 680px;
 	text-align:center;
 	background-image: url('../img/background.png');
 	color:#fff;
+}
+
+.jumbotron p {
+	font-size: 16px;
+	max-width: 800px;
+	margin:0 auto;
+	line-height: 1.2;
+	margin-bottom: 10px;
 }
 
 .jumbotron h1 {
 	border:15pt solid white;
 	width:470px;
 	height:135px;
-	line-height: -20pt;
+	line-height: 85px;
 	margin:0 auto;
+	margin-top:100px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
 }
+
+.jumbotron a {
+	color:#F2CE47;
+}
+
+.jumbotron .seta {
+	margin-top: 50px;
+}
+
+#main {
+
+}
+
+#snippet {
+	margin-bottom: 50px;
+}
+
 
 .bignumber { 
 	text-align: center;
 	font-size: 165px;
+	line-height: 0.7;
 }
 
 .ementa {

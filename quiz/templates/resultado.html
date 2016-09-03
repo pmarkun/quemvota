@@ -2,26 +2,21 @@
 
     {% block content %}
      <!-- Example row of columns -->
-      <div id="snippet" class="row notmobile">
-        <div class="col-md-2">
-        </div>
+      <div class="row notmobile">
         <div class="col-md-2">
           <img src="/static/img/vote.svg" />
         </div>
-        <div class="col-md-6">
-          <p>Quem vota igual a você? Conheça e vote em Projetos de Lei (PL’s) que foram aprovados em plenária na Câmara Municipal de SP. Saiba quanto suas ideias sobre a cidade se aproximam das ideias dos candidatos a vereador nessas eleições. Basta se posicionar diante dos PL’s apresentados para saber qual candidato/vereador vota igual a você. Isso pode facilitar sua escolha na hora de votar!
-Para conferir, clique no botão “resultado”.</p>
+        <div class="col-md-10">
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           </div>
       </div>
 
-      {% for prop in props %}
+      {% for c in cand %}
        <div id="q{{forloop.counter}}" class="questao row">
-        <div class="col-md-2">
-        </div>
         <div class="col-md-2">
           <div class="bignumber notmobile">{{forloop.counter}}</div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-10">
           <div class="ementa"><p>{{prop.ementa}}</p></div>
           <div class="controle">
             <div class="btn btn-discordo" data-questao="{{forloop.counter}}" data-voto="-1">
