@@ -70,12 +70,19 @@ footer {
 
 
 
+#CandidatoForm {
+	text-align: center;
+}
 
 
 
+.questao {
+	display:none;
+}
 
-
-
+#q1 {
+	display: block;
+}
 
 
 
