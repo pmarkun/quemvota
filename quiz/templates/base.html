@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="no-js">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="text/html"/>
+    <meta name="distribution" content="global"/>
+    <meta name="robots" content="follow, all"/>
+    <meta name="googlebot" content="index, follow"/>
+    <meta name="revisit-after" content="10 days"/>
+    <meta name="keywords" content="política, análise matemática, parlamentar, votações, partidos, radar parlamentar, polignu" />
+    <meta name="description" content="A tecnologia a serviço do cidadão - uma ferramenta para análise partidária das casas legislativas."/>
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link rel="shortcut icon" href="/static/assets/favicon1.ico"/>
+    <script src="/static/files/codes/js/jquery.min.js"></script>
+</script>
+</head>
+<body>
+    {% block content %}{% csrf_token %}{% endblock content %}
+</body>
+</html>
