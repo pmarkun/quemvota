@@ -1,7 +1,7 @@
 from __future__ import division
 
 import json
-from itertools import groupby
+from itertools import groupby, chain
 
 from django.shortcuts import render_to_response
 
@@ -22,6 +22,9 @@ PROPOSTA_URL = ('http://documentacao.camara.sp.gov.br/'
 
 def index(request):
     propostas = Proposicao.objects.filter(id_prop__in=PROPOSTAS).distinct()
+    proposta_random = Proposicao.objects.order_by('?')[:1]
+    propostas = list(chain(propostas,proposta_random))
+
     propdata = [{'nome': '{p.sigla} {p.numero}/{p.ano}'.format(p=proposta),
                  'url': PROPOSTA_URL + '{p.sigla}{p.numero}{p.ano}'.format(p=proposta),
                  'ementa': proposta.ementa,
