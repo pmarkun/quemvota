@@ -47,9 +47,13 @@ angular.module('quizapp').
       $scope.quiz = quiz;
       $scope.readout = function(index){
           responsiveVoice.speak(
-            $scope.quiz.propostas[$scope.quiz.current].ementa + '. ' + simbolica,
+            $scope.quiz.propostas[$scope.quiz.current].ementa,
             'Brazilian Portuguese Female',
-            {onend: function(){$('.quiz-question .btn-concordo').eq($scope.quiz.current).click(); }, rate: 1.5}
+            {onend: function(){
+              responsiveVoice.speak(simbolica, 'Brazilian Portuguese Female', 
+                {onend: function() {$('.quiz-question .btn-concordo').eq($scope.quiz.current).click();},
+                rate :1.5});
+            }, rate: 1.2}
           );
       };
       var simbolica = 'Favoráveis permaneçam como estão, contrários se mániféstem.';
