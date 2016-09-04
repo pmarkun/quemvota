@@ -31,8 +31,13 @@
     <div class="quiz-question" ng-repeat="proposta in quiz.propostas" ng-show="$index === quiz.current">
       <div class="quiz-question-ementa well">
         {{ proposta.ementa }}
+        <div class="quiz-holder">
+        <div class="quiz-hashtag">
+              {{proposta.hashtags}}
+        </div>
         <div class="quiz-question-link">
           <a href="{{proposta.url}}" target="_blank">{{proposta.nome}}</a>
+        </div>
         </div>
       </div>
 

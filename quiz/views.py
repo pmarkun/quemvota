@@ -25,6 +25,7 @@ def index(request):
     propdata = [{'nome': '{p.sigla} {p.numero}/{p.ano}'.format(p=proposta),
                  'url': PROPOSTA_URL + '{p.sigla}{p.numero}{p.ano}'.format(p=proposta),
                  'ementa': proposta.ementa,
+                 'hashtags' : proposta.hashtags,
                  'uservote': None} for proposta in propostas]
 
     votacoes = Votacao.objects.filter(proposicao__id_prop__in=PROPOSTAS).order_by('id')
