@@ -65,7 +65,7 @@
         <tr class="quiz-result-parlamentar" ng-repeat="parlamentar in sorted">
           <td class="partido">{{ parlamentar.partido }}</td>
           <td class="nome">{{ parlamentar.nome }}</td>
-          <td class="score">{{ parlamentar.score * 100 }}%</td>
+          <td class="score">{{ parlamentar.score }}/{{ quiz.propostas.length }}</td>
         </tr>
       </tbody>
     </table>
