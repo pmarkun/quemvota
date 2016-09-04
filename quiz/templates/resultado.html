@@ -1,38 +1,24 @@
 {% extends 'base.html' %}
 
     {% block content %}
-     <!-- Example row of columns -->
-      <div class="row notmobile">
+    <div class="row">
         <div class="col-md-2">
-          <img src="/static/img/vote.svg" />
         </div>
-        <div class="col-md-10">
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          </div>
-      </div>
-
-      {% for c in cand %}
-       <div id="q{{forloop.counter}}" class="questao row">
+        <div class="col-md-8">
+          <table class="table table-striped">
+          {% for v in vereadores %}
+            <tr>
+              <td>{{v.partido}}</td>
+              <td>{{v.nome}}</td>
+              <td><div class="barra" style="width:{% widthratio v.distancia 1 30 %}px">{{v.distancia|floatformat:"2"}}</div></td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div>
         <div class="col-md-2">
-          <div class="bignumber notmobile">{{forloop.counter}}</div>
         </div>
-        <div class="col-md-10">
-          <div class="ementa"><p>{{prop.ementa}}</p></div>
-          <div class="controle">
-            <div class="btn btn-discordo" data-questao="{{forloop.counter}}" data-voto="-1">
-                <a class="label" href="#" role="button">Discordo</a>
-            </div>
-            <div class="btn btn-abstencao" data-questao="{{forloop.counter}}" data-voto="0">
-                <a class="label" href="#" role="button" >Abstenção</a>
-            </div>
-            <div class="btn btn-concordo" data-questao="{{forloop.counter}}" data-voto="1">
-                <a class="label" href="#" role="button">Concordo</a>
-            </div>
-        </div>
-        </div>
-      </div>
-      {% endfor %}
-
+    </div>      
+      
       <hr>
 
       <footer>
