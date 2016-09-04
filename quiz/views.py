@@ -28,7 +28,6 @@ def index(request):
                  'uservote': None} for proposta in propostas]
 
     votacoes = Votacao.objects.filter(proposicao__id_prop__in=PROPOSTAS).order_by('id')
-    print votacoes
     votacoes = [max(group, key=lambda v: v.id)
                 for _, group
                 in groupby(votacoes, key=lambda v: v.proposicao_id)]
