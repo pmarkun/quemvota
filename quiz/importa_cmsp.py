@@ -202,6 +202,8 @@ class XmlCMSP:
             prop_nome = self.prop_nome(vot_tree.get('Materia'))
             # se a votacao for associavel a uma proposicao, entao..
             if prop_nome:
+                tipo, numero, ano = self.tipo_num_anoDePropNome(prop_nome)
+                prop_id = '-'.join([tipo.upper(),numero,ano])
                 id_vot = vot_tree.get('VotacaoID')
                 votacoes_em_banco = models.Votacao.objects.filter(
                     id_vot=id_vot)
@@ -210,18 +212,17 @@ class XmlCMSP:
                 else:
                     # a proposicao a qual a votacao sob analise se refere jah
                     # estava no dicionario (eba!)
-                    if prop_nome in proposicoes:
-                        prop = proposicoes[prop_nome]
+                    if prop_id in proposicoes:
+                        prop = proposicoes[prop_id]
                     # a prop. nao estava ainda, entao devemo-la tanto  criar
                     # qnt cadastrar no dicionario.
                     else:
                         prop = models.Proposicao()
-                        prop.sigla, prop.numero, prop.ano = self. \
-                            tipo_num_anoDePropNome(prop_nome)
-                        prop.id_prop = '-'.join([prop.sigla.upper(),prop.numero,prop.ano])
+                        prop.sigla, prop.numero, prop.ano = tipo, numero, ano
+                        prop.id_prop = prop_id
                         prop.casa_legislativa = self.cmsp
                         prop.ementa = vot_tree.get('Ementa')
-                        proposicoes[prop_nome] = prop
+                        proposicoes[prop.id_prop] = prop
 
                     if self.verbose:
                         logger.info('Proposicao %s salva' % prop)
