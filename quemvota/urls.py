@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
+from quiz.models import Proposicao
+
+admin.site.register(Proposicao)
 
 urlpatterns = [
 	url(r'^', include('quiz.urls')),

@@ -451,6 +451,7 @@ class Proposicao(models.Model):
     descricao = models.TextField(blank=True)
     indexacao = models.TextField(blank=True)
     explicacao = models.TextField(blank=True)
+    hashtags = models.TextField(blank=True)
     data_apresentacao = models.DateField(null=True)
     situacao = models.TextField(blank=True)
     casa_legislativa = models.ForeignKey(CasaLegislativa, null=True)
