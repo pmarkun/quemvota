@@ -11,7 +11,7 @@
 
   <div class="quiz-intro row" ng-controller="introCtrl" ng-hide="quiz.started">
     <div class="col-xs-4">
-      <img src="{% static 'img/vote.svg' %}" ng-click="start()"/>
+      <img id="bigredbtn" src="{% static 'img/vote.svg' %}" ng-click="start()"/>
     </div>
     <div class="col-xs-8">
       A sessão vai começar! Aperte o botão para confirmar a sua presença!

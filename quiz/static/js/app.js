@@ -9,6 +9,9 @@ var utils = {
 
 // Let's define our first command. First the text we expect, and then the function it should call
 var commands = {
+  'sob a proteção de deus iniciamos nossos trabalhos' : function () {
+    $("#bigredbtn").click();
+  },
   'pela família meu voto É sim': function() {
     $('.btn-concordo:visible').click();
   },
@@ -32,6 +35,9 @@ $(document).ready(function(){
     annyang.setLanguage('pt-BR');
     annyang.addCommands(commands);
     annyang.debug(true);
+    annyang.start();
+    console.log('Annyang ready!');
+
   }
 });
 
