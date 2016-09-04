@@ -6,7 +6,7 @@
   font-family: Ubuntu, sans;
   background-image: url('../img/background.png');
   background-size: cover;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .jumbotron .container {
