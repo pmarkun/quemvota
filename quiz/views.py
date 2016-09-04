@@ -1,3 +1,5 @@
+from __future__ import division
+
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from quiz.models import Proposicao, CasaLegislativa, Votacao, Voto
