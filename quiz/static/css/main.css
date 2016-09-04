@@ -1,87 +1,134 @@
-body {
-	font-family: Ubuntu;
-}
+/**
+ * JUMBOTRON
+ */
 
 .jumbotron {
-	height: 680px;
-	text-align:center;
-	background-image: url('../img/background.png');
-	color:#fff;
+  font-family: Ubuntu, sans;
+  background-image: url('../img/background.png');
+  background-size: cover;
+  margin-bottom: 10px;
 }
 
-.jumbotron p {
-	font-size: 16px;
-	max-width: 800px;
-	margin:0 auto;
-	line-height: 1.2;
-	margin-bottom: 10px;
+.jumbotron .container {
+  color: white;
+  text-align: center;
 }
 
-.jumbotron h1 {
-	border:15pt solid white;
-	width:470px;
-	height:135px;
-	line-height: 85px;
-	margin:0 auto;
-	margin-top:100px;
-	margin-bottom: 20px;
-	text-transform: uppercase;
+.jumbotron .logo {
+  border: 0.1em solid white;
+  display: inline-block;
+  font-family: Ubuntu;
+  padding: 0.5em;
+  text-transform: uppercase;
 }
 
-.jumbotron a {
-	color:#F2CE47;
+/**
+ * Footer
+ */
+
+footer {
+  background-color: white;
+}
+footer p {
+  font-family: Ubuntu;
+  padding: 1em 2em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.jumbotron .seta {
-	margin-top: 50px;
+footer p a {
+  color: inherit;
+  text-decoration: none;
 }
 
-#main {
-
+/**
+ * QUIZ INTRO
+ */
+.quiz-intro {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
+.quiz-intro img {
+  cursor: pointer;
+}
+
+/**
+ * QUIZ UI
+ */
+.quiz-ui .quiz-question {
+  margin: 1em 0 0;
+}
+.quiz-ui .controle {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.quiz-ui .controle .btn {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 64px;
+  width: 64px;
+}
+
+.quiz-ui .controle .btn-concordo {
+  background-image: url('../img/concordo.svg');
+}
+.quiz-ui .controle .btn-abstencao {
+  background-image: url('../img/abstencao.svg');
+}
+.quiz-ui .controle .btn-discordo {
+  background-image: url('../img/discordo.png');
+}
+
+.quiz-ui .quiz-question-link {
+  text-align: right;
+}
+/*
 #snippet {
-	margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 
 .bignumber { 
-	text-align: center;
-	font-size: 165px;
-	line-height: 0.7;
+  text-align: center;
+  font-size: 165px;
+  line-height: 0.7;
 }
 
 .ementa {
-	background-color: #0E2D40;
-	color:#FFF;
-	padding:22px;
-	font-size: 18px;
+  background-color: #0E2D40;
+  color:#FFF;
+  padding:22px;
+  font-size: 18px;
 }
 
 .small {
-	float:right;
+  float:right;
 }
 
 .controle {
-	margin-top:2em;
-	text-align: center;
+  margin-top:2em;
+  text-align: center;
 }
 
 .controle .btn {
-	width:92px;
-	height:92px;
-	background-repeat: no-repeat;
+  width:92px;
+  height:92px;
+  background-repeat: no-repeat;
 }
 .btn-concordo {
-	background-image: url('../img/concordo.svg');
+  background-image: url('../img/concordo.svg');
 }
 
 .btn-abstencao {
-	background-image: url('../img/abstencao.svg');
+  background-image: url('../img/abstencao.svg');
 }
 
 .btn-discordo {
-	background-image: url('../img/discordo.png');
+  background-image: url('../img/discordo.png');
 }
 
 .controle .label {
@@ -90,40 +137,34 @@ body {
 	color:#000;
 }
 footer {
-	text-align: center;
+  text-align: center;
 }
 /* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+Author's custom styles
+========================================================================== */
 
-@media only screen and (max-device-width: 480px) {
-	div#wrapper {
-		width: 400px;
-	}
+  @media only screen and (max-device-width: 480px) {
+    div#wrapper {
+      width: 400px;
+    }
 
-	.notmobile {
-		display:none;
-	}		
-}
-
-
-
-
-#CandidatoForm {
-	text-align: center;
-}
+    .notmobile {
+      display:none;
+    }		
+  }
 
 
 
-.questao {
-	display:none;
-}
 
-#q1 {
-	display: block;
-}
+  #CandidatoForm {
+    text-align: center;
+  }
 
 
+
+  .questao {
+    display:none;
+  }
 
 .barra {
 	background-color: #F00;

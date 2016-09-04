@@ -1,25 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
 
-    {% block content %}
-     <!-- Example row of columns -->
-      <div id="snippet" class="row notmobile">
-        <div class="col-md-2">
+{% block content %}
+<script type="text/javascript">
+  var url = 'http://documentacao.camara.sp.gov.br/cgi-bin/wxis.exe/iah/scripts/?IsisScript=iah.xis&lang=pt&format=detalhado.pft&base=proje&form=A&nextAction=search&indexSearch=^nTw^lTodos%20os%20campos&exprSearch=P=';
+  var propostas = [
+    {% for prop in props %}
+    {
+      nome: "{{ prop.sigla }} {{ prop.numero }}/{{ prop.ano }}",
+      ementa: "{{ prop.ementa }}",
+      uservote: null,
+      url: url + "{{prop.sigla}}{{prop.numero}}{{prop.ano}}"
+    },
+    {% endfor %}
+  ];
+</script>
+
+<div class="quiz" ng-app="quizapp">
+
+  <div class="quiz-intro row" ng-controller="introCtrl" ng-hide="quiz.started">
+    <div class="col-xs-4">
+      <img src="{% static 'img/vote.svg' %}" ng-click="start()"/>
+    </div>
+    <div class="col-xs-8">
+      A sessão vai começar! Aperte o botão para confirmar a sua presença!
+    </div>
+  </div><!-- /.quiz-intro -->
+
+  {% verbatim %}
+  <div class="quiz-ui" ng-controller="quizUICtrl" ng-show="quiz.started">
+
+    <div class="quiz-question" ng-repeat="proposta in quiz.propostas" ng-show="$index === quiz.current">
+      <div class="quiz-question-ementa well">
+        {{ proposta.ementa }}
+        <div class="quiz-question-link">
+          <a href="{{proposta.url}}" target="_blank">{{proposta.nome}}</a>
         </div>
-        <div class="col-md-2">
-          <img id="bigredbtn" src="/static/img/vote.svg" />
-        </div>
-        <div class="col-md-6">
-          <p>Quem vota igual a você? Conheça e vote em Projetos de Lei (PL’s) que foram aprovados em plenária na Câmara Municipal de SP. Saiba quanto suas ideias sobre a cidade se aproximam das ideias dos candidatos a vereador nessas eleições. Basta se posicionar diante dos PL’s apresentados para saber qual candidato/vereador vota igual a você. Isso pode facilitar sua escolha na hora de votar!
-Para conferir, clique no botão “resultado”.</p>
-          </div>
       </div>
 
-      {% for prop in props %}
-       <div id="q{{forloop.counter}}" class="questao row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-          <div class="bignumber notmobile">{{forloop.counter}}</div>
+      <div class="controle">
+        <div class="btn btn-discordo" ng-click="quiz.vote($index, -1)"
+          data-toggle="tooltip" data-placement="bottom" title="Discordo">
         </div>
         <div class="col-md-6">
           <div class="ementa"><p>{{prop.ementa}}</p>
@@ -37,14 +58,15 @@ Para conferir, clique no botão “resultado”.</p>
                 <span class="label" href="#" role="button">Concordo</a>
             </div>
         </div>
+        <div class="btn btn-concordo" ng-click="quiz.vote($index, 1)"
+          data-toggle="tooltip" data-placement="bottom" title="Concordo">
         </div>
-      </div>
-      {% endfor %}
+      </div><!-- /.controle -->
 
-      <hr>
+    </div>
+  </div>
+  {% endverbatim %}
 
-      <footer>
-          <p>Desenvolvido no 1o Hackathon de Eleições</p>
-      </footer>
-    
+</div><!-- /.quiz -->
+
 {% endblock content %}
