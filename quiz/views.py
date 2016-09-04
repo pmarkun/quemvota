@@ -42,7 +42,8 @@ def index(request):
                       'partido': parlamentar.partido.nome,
                       'votos': list(votos)}
                      for parlamentar, votos
-                     in zip(builder.parlamentares, matriz)]
+                     in zip(builder.parlamentares, matriz)
+                     if not all(voto == 0.0 for voto in votos)]
 
     return render_to_response('index.html',
                               {'propostas' : propostas,

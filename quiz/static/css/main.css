@@ -145,7 +145,11 @@ footer p a {
 .quiz-result h2 {
   color: #bec7ef;
   margin: 0.33em 0 0.66em;
+  text-align: center;
   text-transform: uppercase;
+}
+.quiz-result table {
+  width: 100%;
 }
 .quiz-result .result {
   display: flex;
@@ -173,4 +177,22 @@ footer {
 }
 .quiz-result-parlamentar .score {
   text-align: right;
+}
+
+@media (min-width: 768px) {
+  .quiz-result h2 {
+    font-size: 3.14em;
+  }
+  .quiz-question-ementa {
+    font-size: 1.33em;
+  }
+  .quiz-ui .controle {
+    margin: 0 auto;
+    max-width: 540px;
+    padding-bottom: 2em;
+  }
+  .quiz-ui .controle .btn {
+    height: 96px;
+    width: 96px;
+  }
 }
