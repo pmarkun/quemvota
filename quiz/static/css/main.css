@@ -58,6 +58,9 @@ body {
 	font-size: 18px;
 }
 
+.small {
+	float:right;
+}
 
 .controle {
 	margin-top:2em;
