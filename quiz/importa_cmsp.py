@@ -218,6 +218,7 @@ class XmlCMSP:
                         prop = models.Proposicao()
                         prop.sigla, prop.numero, prop.ano = self. \
                             tipo_num_anoDePropNome(prop_nome)
+                        prop.id_prop = '-'.join([prop.sigla.upper(),prop.numero,prop.ano])
                         prop.casa_legislativa = self.cmsp
                         prop.ementa = vot_tree.get('Ementa')
                         proposicoes[prop_nome] = prop
