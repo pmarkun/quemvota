@@ -21,6 +21,13 @@
   {% verbatim %}
   <div class="quiz-ui" ng-controller="quizUICtrl" ng-show="quiz.started">
 
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="quiz.simbolica">
+        Iniciar votação simbólica.
+      </label>
+    </div>
+
     <div class="quiz-question" ng-repeat="proposta in quiz.propostas" ng-show="$index === quiz.current">
       <div class="quiz-question-ementa well">
         {{ proposta.ementa }}
