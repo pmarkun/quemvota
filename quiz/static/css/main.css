@@ -83,10 +83,19 @@ footer p a {
   background-image: url('../img/discordo.png');
 }
 
+.quiz-ui .quiz-holder {
+  margin-top:10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+}
 .quiz-ui .quiz-question-link {
-  text-align: right;
+  float: right;
 }
 
+.quiz-ui .quiz-hashtag {
+  font-weight: bold;
+  float:left;
+}
 /**
  * RESULTS
  */
