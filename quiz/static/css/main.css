@@ -42,6 +42,14 @@ footer p a {
 }
 
 /**
+ * QUIZ APP
+ */
+
+.quiz {
+  padding-bottom: 3em; 
+}
+
+/**
  * QUIZ INTRO
  */
 .quiz-intro {
@@ -66,11 +74,23 @@ footer p a {
 }
 
 .quiz-ui .controle .btn {
-  display: block;
   background-repeat: no-repeat;
   background-size: cover;
+  display: block;
   height: 64px;
+  position: relative;
   width: 64px;
+}
+
+.quiz-ui .controle .btn::after {
+  content: attr(title);
+  font-size: 1.2em;
+  font-weight: bold;
+  left: -12px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: 4.66em;
 }
 
 .quiz-ui .controle .btn-concordo {
@@ -156,10 +176,17 @@ footer p a {
   justify-content: space-around;
   padding-bottom: 0.66em;
 }
-.quiz-result img {
+.quiz-result .picture {
   border-radius: 50%;
   flex-basis: 120px;
   flex-grow: 3;
+  text-align: center;
+}
+
+.quiz-result img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 80%;
 }
 
 .quiz-result .info {
@@ -179,17 +206,39 @@ footer {
   text-align: right;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 479px) {
+  .quiz-intro {
+    padding: 1.66em 0;
+    font-size: 1.4em;
+  }
   .quiz-result h2 {
     font-size: 3.14em;
   }
   .quiz-question-ementa {
-    font-size: 1.33em;
+    font-size: 1.2em;
   }
   .quiz-ui .controle {
     margin: 0 auto;
     max-width: 540px;
     padding-bottom: 2em;
+  }
+  .quiz-ui .controle .btn {
+    height: 72px;
+    width: 72px;
+  }
+  .quiz-ui .controle .btn::after {
+    top: 6em;
+  }
+}
+@media (min-width: 767px) {
+  .quiz-intro {
+    font-size: 1.66em;
+  }
+  .quiz-result h2 {
+    font-size: 3.14em;
+  }
+  .quiz-question-ementa {
+    font-size: 1.33em;
   }
   .quiz-ui .controle .btn {
     height: 96px;

@@ -136,7 +136,8 @@ angular.module('quizapp').
         });
       };
       $scope.$watch('quiz.current', function(){
-        if ($scope.quiz.current === $scope.quiz.propostas.length){
+        if (($scope.quiz.current === $scope.quiz.propostas.length)){
+          $('.quiz-top-result .nome').fitText();
           $scope.calculateScores();
           $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
         }
