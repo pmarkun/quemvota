@@ -11,7 +11,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-	props = Proposicao.objects.filter(votacao__data__gt = '2016-01-01').distinct()[0:10]
+	lista = ['PL-236-2016','PL-415-2012','PL-349-2014','PL-529-2014','PL-65-2014','PL-209-2011', 'PDL-6-2013', 'PL-254-2010', 'PL-236-2013']
+	props = Proposicao.objects.filter(id_prop__in = lista).distinct()
 	return render_to_response('index.html', {'props' : props})
 
 def candidato(request):
@@ -27,7 +28,10 @@ def resultado(request, votacao):
 	votacoes = []
 	cmsp = CasaLegislativa.objects.filter(nome_curto = 'cmsp')[0]
 	
-	props = Proposicao.objects.filter(votacao__data__gt = '2016-01-01').distinct()[0:10]
+	lista = ['PL-236-2016','PL-415-2012','PL-349-2014','PL-529-2014','PL-65-2014','PL-209-2011', 'PDL-6-2013', 'PL-254-2010', 'PL-236-2013']
+	props = Proposicao.objects.filter(id_prop__in = lista).distinct()
+		
+
 	for p in props:
 		z = Votacao.objects.filter(proposicao__id = p.id).last()
 		votacoes.append(z)
