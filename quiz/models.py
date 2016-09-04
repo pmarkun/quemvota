@@ -52,8 +52,8 @@ GENEROS = (
 )
 
 SITUACAO = (
-    (P, "Parlamentar"),
-    (C, "Candidato")
+    ("P", "Parlamentar"),
+    ("C", "Candidato")
     )
 
 MUNICIPAL = 'MUNICIPAL'
