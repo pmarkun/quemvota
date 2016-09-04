@@ -419,6 +419,7 @@ class Parlamentar(models.Model):
     localidade = models.CharField(max_length=100, blank=True)
     foto = models.ImageField(upload_to='uploads/', default='/static/profile.png')
     situacao = models.CharField(max_length=10, choices=SITUACOES, default='P')
+    email = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):
         return '%s - %s' % (self.nome, self.partido.nome)
