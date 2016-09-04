@@ -22,7 +22,10 @@ Para conferir, clique no botão “resultado”.</p>
           <div class="bignumber notmobile">{{forloop.counter}}</div>
         </div>
         <div class="col-md-6">
-          <div class="ementa"><p>{{prop.ementa}}</p></div>
+          <div class="ementa"><p>{{prop.ementa}}</p>
+          <p class="small">
+          <a href="http://documentacao.camara.sp.gov.br/cgi-bin/wxis.exe/iah/scripts/?IsisScript=iah.xis&lang=pt&format=detalhado.pft&base=proje&form=A&nextAction=search&indexSearch=^nTw^lTodos%20os%20campos&exprSearch=P={{prop.sigla}}{{prop.numero}}{{prop.ano}}" target="_blank">
+          {{prop.sigla}} {{prop.numero}}/{{prop.ano}}</a></p></div>
           <div class="controle">
             <div class="btn btn-discordo" data-questao="{{forloop.counter}}" data-voto="N">
                 <a class="label" href="#" role="button">Discordo</a>
