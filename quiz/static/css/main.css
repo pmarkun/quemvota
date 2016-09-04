@@ -1,133 +1,124 @@
-body {
-	font-family: Ubuntu;
-}
+/**
+ * JUMBOTRON
+ */
 
 .jumbotron {
-	height: 680px;
-	text-align:center;
-	background-image: url('../img/background.png');
-	color:#fff;
+  font-family: Ubuntu, sans;
+  background-image: url('../img/background.png');
+  background-size: cover;
+  margin-bottom: 10px;
 }
 
-.jumbotron p {
-	font-size: 16px;
-	max-width: 800px;
-	margin:0 auto;
-	line-height: 1.2;
-	margin-bottom: 10px;
+.jumbotron .container {
+  color: white;
+  text-align: center;
 }
 
-.jumbotron h1 {
-	border:15pt solid white;
-	width:470px;
-	height:135px;
-	line-height: 85px;
-	margin:0 auto;
-	margin-top:100px;
-	margin-bottom: 20px;
-	text-transform: uppercase;
+.jumbotron .logo {
+  border: 0.1em solid white;
+  display: inline-block;
+  font-family: Ubuntu;
+  padding: 0.5em;
+  text-transform: uppercase;
 }
 
-.jumbotron a {
-	color:#F2CE47;
-}
+/**
+ * Footer
+ */
 
-.jumbotron .seta {
-	margin-top: 50px;
-}
-
-#main {
-
-}
-
-#snippet {
-	margin-bottom: 50px;
-}
-
-
-.bignumber { 
-	text-align: center;
-	font-size: 165px;
-	line-height: 0.7;
-}
-
-.ementa {
-	background-color: #0E2D40;
-	color:#FFF;
-	padding:22px;
-	font-size: 18px;
-}
-
-.small {
-	float:right;
-}
-
-.controle {
-	margin-top:2em;
-	text-align: center;
-}
-
-.controle .btn {
-	width:92px;
-	height:92px;
-	background-repeat: no-repeat;
-}
-.btn-concordo {
-	background-image: url('../img/concordo.svg');
-}
-
-.btn-abstencao {
-	background-image: url('../img/abstencao.svg');
-}
-
-.btn-discordo {
-	background-image: url('../img/discordo.png');
-}
-
-.controle .label {
-	display: block;
-	padding-top:92px;
-	color:#000;
-}
 footer {
-	text-align: center;
+  background-color: white;
 }
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-@media only screen and (max-device-width: 480px) {
-	div#wrapper {
-		width: 400px;
-	}
-
-	.notmobile {
-		display:none;
-	}		
+footer p {
+  font-family: Ubuntu;
+  padding: 1em 2em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-
-
-
-#CandidatoForm {
-	text-align: center;
+footer p a {
+  color: inherit;
+  text-decoration: none;
 }
 
-
-
-.questao {
-	display:none;
+/**
+ * QUIZ INTRO
+ */
+.quiz-intro {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
-#q1 {
-	display: block;
+.quiz-intro img {
+  cursor: pointer;
 }
 
-
-
-.barra {
-	background-color: #F00;
+/**
+ * QUIZ UI
+ */
+.quiz-ui .quiz-question {
+  margin: 1em 0 0;
 }
-.barraholder {
-	width:200px;
+.quiz-ui .controle {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.quiz-ui .controle .btn {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 64px;
+  width: 64px;
+}
+
+.quiz-ui .controle .btn-concordo {
+  background-image: url('../img/concordo.svg');
+}
+.quiz-ui .controle .btn-abstencao {
+  background-image: url('../img/abstencao.svg');
+}
+.quiz-ui .controle .btn-discordo {
+  background-image: url('../img/discordo.png');
+}
+
+.quiz-ui .quiz-question-link {
+  text-align: right;
+}
+
+/**
+ * RESULTS
+ */
+
+.quiz-result h2 {
+  color: #bec7ef;
+  margin: 0.33em 0 0.66em;
+  text-transform: uppercase;
+}
+
+.quiz-result-parlamentar {
+  font-size: 1.2em;
+}
+.quiz-result-parlamentar .partido {
+  font-weight: bold;
+  padding: 0.33em 0;
+  text-align: center;
+  width: 4em;
+}
+
+.quiz-result-parlamentar .nome {
+  text-indent: 0.66em;
+}
+.quiz-result-parlamentar .distancia {
+  text-align: right;
+}
+
+.quiz-result-parlamentar:nth-child(2n+1) .partido {
+  background-color: #bec7ef;
+}
+.quiz-result-parlamentar:nth-child(2n) .partido,
+.quiz-result-parlamentar:nth-child(2n+1) .nome,
+.quiz-result-parlamentar:nth-child(2n+1) .distancia {
+  background-color: #ffeb9d;
 }
