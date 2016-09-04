@@ -85,7 +85,9 @@ body {
 }
 
 .controle .label {
+	display: block;
 	padding-top:92px;
+	color:#000;
 }
 footer {
 	text-align: center;

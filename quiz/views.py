@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from quiz.models import Proposicao, CasaLegislativa, Votacao
+from quiz.models import Proposicao, CasaLegislativa, Votacao, Voto
 
 from .utils import MatrizesDeDadosBuilder
 from .forms import CandidatoForm
@@ -33,7 +33,7 @@ def resultado(request, votacao):
 		
 
 	for p in props:
-		z = Votacao.objects.filter(proposicao__id = p.id).last()
+		z = Votacao.objects.filter(proposicao__id = p.id).order_by('id').last()
 		votacoes.append(z)
 	m_matriz = MatrizesDeDadosBuilder(votacoes, list(cmsp.partidos()), list(cmsp.parlamentares()))
 	matriz = m_matriz.gera_matrizes()
@@ -42,10 +42,24 @@ def resultado(request, votacao):
 	for index, parlamentar in enumerate(m_matriz.parlamentares):
 		a = matriz[index]
 		b = [resultado_map[n] for n in votacao]
-		euclides = sqrt(sum( (a - b)**2 for a, b in zip(a, b)))
-		vereadores.append({
-			'distancia' : euclides,
-			'nome' : parlamentar.nome
-			})
-		vereadores = sorted(vereadores, key=lambda vereador: vereador['distancia'])
+		not_euclides = 0
+		for index,r in enumerate(a):
+			if b[index] == r:
+				not_euclides += 1
+		not_euclides = round(not_euclides/len(a),2)*100
+		votos = []
+	
+		for v in votacoes:
+			voto = Voto.objects.filter(votacao_id = v.id, parlamentar = parlamentar.id)
+			if voto:
+				votos.append({ 'votacao' : v.id_vot, 'projeto' : v.proposicao.id_prop, 'voto' : voto.last()})
+		
+
+		if len(votos) > len(b)/2:
+			vereadores.append({
+				'distancia' : not_euclides,
+				'nome' : parlamentar.nome,
+				'votos' : votos
+				})
+		vereadores = sorted(vereadores, key=lambda vereador: vereador['distancia'], reverse=True)
 	return render_to_response('resultado.html', { 'vereadores' : vereadores })
