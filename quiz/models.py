@@ -51,6 +51,11 @@ GENEROS = (
     (F, "Feminino"),
 )
 
+SITUACAO = (
+    (P, "Parlamentar"),
+    (C, "Candidato")
+    )
+
 MUNICIPAL = 'MUNICIPAL'
 ESTADUAL = 'ESTADUAL'
 FEDERAL = 'FEDERAL'
@@ -412,6 +417,8 @@ class Parlamentar(models.Model):
     casa_legislativa = models.ForeignKey(CasaLegislativa, null=True)
     partido = models.ForeignKey(Partido)
     localidade = models.CharField(max_length=100, blank=True)
+    foto = models.ImageField(upload_to='uploads/')
+    situacao = models.CharField(max_length=10, choices=SITUACOES)
 
     def __unicode__(self):
         return '%s - %s' % (self.nome, self.partido.nome)
