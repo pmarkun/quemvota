@@ -86,89 +86,39 @@ footer p a {
 .quiz-ui .quiz-question-link {
   text-align: right;
 }
-/*
-#snippet {
-  margin-bottom: 50px;
+
+/**
+ * RESULTS
+ */
+
+.quiz-result h2 {
+  color: #bec7ef;
+  margin: 0.33em 0 0.66em;
+  text-transform: uppercase;
 }
 
-
-.bignumber { 
+.quiz-result-parlamentar {
+  font-size: 1.2em;
+}
+.quiz-result-parlamentar .partido {
+  font-weight: bold;
+  padding: 0.33em 0;
   text-align: center;
-  font-size: 165px;
-  line-height: 0.7;
+  width: 4em;
 }
 
-.ementa {
-  background-color: #0E2D40;
-  color:#FFF;
-  padding:22px;
-  font-size: 18px;
+.quiz-result-parlamentar .nome {
+  text-indent: 0.66em;
+}
+.quiz-result-parlamentar .distancia {
+  text-align: right;
 }
 
-.small {
-  float:right;
+.quiz-result-parlamentar:nth-child(2n+1) .partido {
+  background-color: #bec7ef;
 }
-
-.controle {
-  margin-top:2em;
-  text-align: center;
-}
-
-.controle .btn {
-  width:92px;
-  height:92px;
-  background-repeat: no-repeat;
-}
-.btn-concordo {
-  background-image: url('../img/concordo.svg');
-}
-
-.btn-abstencao {
-  background-image: url('../img/abstencao.svg');
-}
-
-.btn-discordo {
-  background-image: url('../img/discordo.png');
-}
-
-.controle .label {
-	display: block;
-	padding-top:92px;
-	color:#000;
-}
-footer {
-  text-align: center;
-}
-/* ==========================================================================
-Author's custom styles
-========================================================================== */
-
-  @media only screen and (max-device-width: 480px) {
-    div#wrapper {
-      width: 400px;
-    }
-
-    .notmobile {
-      display:none;
-    }		
-  }
-
-
-
-
-  #CandidatoForm {
-    text-align: center;
-  }
-
-
-
-  .questao {
-    display:none;
-  }
-
-.barra {
-	background-color: #F00;
-}
-.barraholder {
-	width:200px;
+.quiz-result-parlamentar:nth-child(2n) .partido,
+.quiz-result-parlamentar:nth-child(2n+1) .nome,
+.quiz-result-parlamentar:nth-child(2n+1) .distancia {
+  background-color: #ffeb9d;
 }

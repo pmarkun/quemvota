@@ -3,17 +3,8 @@
 
 {% block content %}
 <script type="text/javascript">
-  var url = 'http://documentacao.camara.sp.gov.br/cgi-bin/wxis.exe/iah/scripts/?IsisScript=iah.xis&lang=pt&format=detalhado.pft&base=proje&form=A&nextAction=search&indexSearch=^nTw^lTodos%20os%20campos&exprSearch=P=';
-  var propostas = [
-    {% for prop in props %}
-    {
-      nome: "{{ prop.sigla }} {{ prop.numero }}/{{ prop.ano }}",
-      ementa: "{{ prop.ementa }}",
-      uservote: null,
-      url: url + "{{prop.sigla}}{{prop.numero}}{{prop.ano}}"
-    },
-    {% endfor %}
-  ];
+  var propostas = {{ propdata|safe }};
+  var parlamentares = {{ parldata|safe }};
 </script>
 
 <div class="quiz" ng-app="quizapp">
@@ -42,29 +33,45 @@
         <div class="btn btn-discordo" ng-click="quiz.vote($index, -1)"
           data-toggle="tooltip" data-placement="bottom" title="Discordo">
         </div>
-        <div class="col-md-6">
-          <div class="ementa"><p>{{prop.ementa}}</p>
-          <p class="small">
-          <a href="http://documentacao.camara.sp.gov.br/cgi-bin/wxis.exe/iah/scripts/?IsisScript=iah.xis&lang=pt&format=detalhado.pft&base=proje&form=A&nextAction=search&indexSearch=^nTw^lTodos%20os%20campos&exprSearch=P={{prop.sigla}}{{prop.numero}}{{prop.ano}}" target="_blank">
-          {{prop.sigla}} {{prop.numero}}/{{prop.ano}}</a></p></div>
-          <div class="controle">
-            <div class="btn btn-discordo" data-questao="{{forloop.counter}}" data-voto="N">
-                <span class="label" href="#" role="button">Discordo</a>
-            </div>
-            <div class="btn btn-abstencao" data-questao="{{forloop.counter}}" data-voto="A">
-                <span class="label" href="#" role="button" >Abstenção</a>
-            </div>
-            <div class="btn btn-concordo" data-questao="{{forloop.counter}}" data-voto="S">
-                <span class="label" href="#" role="button">Concordo</a>
-            </div>
+        <div class="btn btn-abstencao" ng-click="quiz.vote($index, 0)"
+          data-toggle="tooltip" data-placement="bottom" title="Abstenção">
         </div>
         <div class="btn btn-concordo" ng-click="quiz.vote($index, 1)"
           data-toggle="tooltip" data-placement="bottom" title="Concordo">
         </div>
       </div><!-- /.controle -->
 
+    </div><!-- /.quiz-question -->
+  </div><!-- /.quiz-ui -->
+  {% endverbatim %}
+
+  {% verbatim %}
+  <div class="quiz-result" ng-controller="resultsCtrl" ng-show="sorted">
+
+    <div class="quiz-top-result row">
+      <h1>UAU! Você vota mais parecido com</h1>
+      <div class="result">
+        <img src="https://placekitten.com/200/200">
+        <div class="info">
+          <div class="nome">{{ sorted[0].nome }}</div>
+          <div class="partido">{{ sorted[0].partido }}</div>
+          <div class="distancia">{{ sorted[0].distance }}</div>
+        </div>
+      </div><!-- /.result -->
+
     </div>
-  </div>
+
+    <h2>Top 5 Vereadores</h2>
+    <table>
+      <tbody>
+        <tr class="quiz-result-parlamentar" ng-repeat="parlamentar in sorted">
+          <td class="partido">{{ parlamentar.partido }}</td>
+          <td class="nome">{{ parlamentar.nome }}</td>
+          <td class="distancia">{{ parlamentar.distance * 100 }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  <div>
   {% endverbatim %}
 
 </div><!-- /.quiz -->

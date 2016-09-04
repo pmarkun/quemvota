@@ -26,17 +26,8 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        {% block jumbotron %}
-            <div class="jumbotron notmobile">
-              <div class="container">
-                <h1>Quem vota</h1>
-                <p>Um aplicativo para fazer você repensar a treta que é o legislativo ;).</p>
-                <div class="seta"><img src="/static/img/seta.svg" /></div>
-                </div>
-            </div>
-
-        {% endblock jumbotron %}
-
+        {% include 'jumbotron.html' %}
+       
         <div id="main" class="container">
           {% block content %} {% endblock content %}
         </div>
@@ -46,6 +37,7 @@
 
         <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
         <script src="/static/js/vendor/jquery-1.11.2.js"></script>
+        <script src="/static/js/vendor/underscore.js"></script>
         <script src="/static/js/vendor/angular.js"></script>
         <script src="/static/js/vendor/bootstrap.js"></script>
         <script src="/static/js/app.js"></script>
