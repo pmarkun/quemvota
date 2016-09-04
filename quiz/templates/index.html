@@ -53,12 +53,10 @@
       <div class="result">
         <img src="https://placekitten.com/200/200">
         <div class="info">
-          <div class="nome">{{ sorted[0].nome }}</div>
-          <div class="partido">{{ sorted[0].partido }}</div>
-          <div class="distancia">{{ sorted[0].distance }}</div>
+          <div class="nome">{{ sorted[0].nome }} &mdash; {{ sorted[0].partido }}</div>
+          <div class="score">{{ sorted[0].score }} / {{ quiz.propostas.length }}</div>
         </div>
       </div><!-- /.result -->
-
     </div>
 
     <h2>Top 5 Vereadores</h2>
@@ -67,13 +65,10 @@
         <tr class="quiz-result-parlamentar" ng-repeat="parlamentar in sorted">
           <td class="partido">{{ parlamentar.partido }}</td>
           <td class="nome">{{ parlamentar.nome }}</td>
-          <td class="distancia">{{ parlamentar.distance * 100 }}%</td>
+          <td class="score">{{ parlamentar.score * 100 }}%</td>
         </tr>
       </tbody>
     </table>
-  <div>
+  </div><!-- /.quiz-result -->
   {% endverbatim %}
-
-</div><!-- /.quiz -->
-
 {% endblock content %}

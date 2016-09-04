@@ -1,9 +1,9 @@
 var utils = {
-  distance: function(vectorA, vectorB) {
+  score: function(vectorA, vectorB) {
     return vectorA.map(function(valueA, index){
       var valueB = vectorB[index];
       return valueA === valueB ? 1: 0;
-    }).reduce(function(a,b){ return a+b; }) / vectorA.length;
+    }).reduce(function(a,b){ return a+b; });
   }
 };
 
@@ -50,7 +50,7 @@ angular.module('quizapp').
             $scope.quiz.propostas[$scope.quiz.current].ementa,
             'Brazilian Portuguese Female',
             {onend: function(){
-              responsiveVoice.speak(simbolica, 'Brazilian Portuguese Female', 
+              responsiveVoice.speak(simbolica, 'Brazilian Portuguese Female',
                 {onend: function() {$('.quiz-question .btn-concordo').eq($scope.quiz.current).click();},
                 rate :1.5});
             }, rate: 1.2}
@@ -75,16 +75,16 @@ angular.module('quizapp').
   '$scope', 'quiz',
     function($scope, quiz){
       $scope.quiz = quiz;
-      $scope.calculateDistances = function(){
+      $scope.calculateScores = function(){
         var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
         $scope.quiz.parlamentares.forEach(function(parlamentar){
-          parlamentar.distance = utils.distance(uservotes, parlamentar.votos);
+          parlamentar.score = utils.score(uservotes, parlamentar.votos);
         });
       };
       $scope.$watch('quiz.current', function(){
         if ($scope.quiz.current === $scope.quiz.propostas.length){
-          $scope.calculateDistances();
-          $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'distance').reverse().slice(0, 30);
+          $scope.calculateScores();
+          $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
         }
       });
     }

@@ -110,7 +110,7 @@ footer p a {
 .quiz-result-parlamentar .nome {
   text-indent: 0.66em;
 }
-.quiz-result-parlamentar .distancia {
+.quiz-result-parlamentar .score {
   text-align: right;
 }
 
@@ -119,6 +119,49 @@ footer p a {
 }
 .quiz-result-parlamentar:nth-child(2n) .partido,
 .quiz-result-parlamentar:nth-child(2n+1) .nome,
-.quiz-result-parlamentar:nth-child(2n+1) .distancia {
+.quiz-result-parlamentar:nth-child(2n+1) .score {
   background-color: #ffeb9d;
+}
+.quiz-top-result {
+  background-color: #bec7ef;
+}
+.quiz-top-result h1 {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.66em 1em;
+  text-align: center;
+}
+
+.quiz-result h2 {
+  color: #bec7ef;
+  margin: 0.33em 0 0.66em;
+  text-transform: uppercase;
+}
+.quiz-result .result {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 0.66em;
+}
+.quiz-result img {
+  border-radius: 50%;
+  flex-basis: 120px;
+  flex-grow: 3;
+}
+
+.quiz-result .info {
+  flex-basis: 180px;
+  flex-grow: 5;
+}
+
+.controle .label {
+  display: block;
+  padding-top:92px;
+  color:#000;
+}
+footer {
+  text-align: center;
+}
+.quiz-result-parlamentar .score {
+  text-align: right;
 }
