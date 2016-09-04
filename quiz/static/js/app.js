@@ -7,6 +7,33 @@ var utils = {
   }
 };
 
+// Let's define our first command. First the text we expect, and then the function it should call
+var commands = {
+  'pela família meu voto É sim': function() {
+    $('.btn-concordo:visible').click();
+  },
+  'pela família voto É sim': function() {
+    $('.btn-concordo:visible').click();
+  },
+  'meu voto é sim': function() {
+    $('.btn-concordo:visible').click();
+  },
+  'Meu voto é não': function() {
+    $('.btn-discordo:visible').click();
+  },
+  'é golpe': function() {
+    $('.btn-discordo:visible').click();
+  }
+};
+
+$(document).ready(function(){
+  if (annyang) {
+    // Add our commands to annyang
+    annyang.setLanguage('pt-BR');
+    annyang.addCommands(commands);
+    annyang.debug(true);
+  }
+});
 
 angular.module('quizapp', []);
 
@@ -32,6 +59,11 @@ angular.module('quizapp').
       $scope.quiz = quiz;
       $scope.start = function(){
         $scope.quiz.started = true;
+        if (annyang) {
+          annyang.start();
+        } else {
+          console.log('banana');
+        }
 
         // $('html, body').animate({
         //   scrollTop: $('.quiz-ui').offset().top
