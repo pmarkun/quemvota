@@ -18,6 +18,7 @@ $(document).ready(function () {
 				});
 			}
 		else {
+			$("#q"+q).hide('slow');
 			window.location.href = "/resultado/"+MEUS_VOTOS.join("");
 			}
 	});

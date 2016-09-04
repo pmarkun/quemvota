@@ -10,10 +10,10 @@
             <tr>
               <td>{{v.partido}}</td>
               <td>{{v.nome}}</td>
-              <td><div class="barra" style="width:{{v.distancia}}%">{{v.distancia|floatformat:"2"}}</div></td>
+              <td class="barraholder"><div class="barra" style="width:{{v.distancia}}%">{{v.distancia|floatformat:"2"}}</div></td>
               <td>
               {% for voto in v.votos %}
-                [{{voto.projeto}} <a href="#" title='{{voto.votacao}}'>{{voto.voto.opcao}}</a>]
+                [{{voto.projeto}} {{voto.voto.opcao}}]
                 {% endfor %}</td>
             </tr>
           {% endfor %}

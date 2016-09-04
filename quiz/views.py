@@ -59,6 +59,7 @@ def resultado(request, votacao):
 			vereadores.append({
 				'distancia' : not_euclides,
 				'nome' : parlamentar.nome,
+				'partido' : parlamentar.partido.nome,
 				'votos' : votos
 				})
 		vereadores = sorted(vereadores, key=lambda vereador: vereador['distancia'], reverse=True)
