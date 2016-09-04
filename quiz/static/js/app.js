@@ -45,8 +45,9 @@ angular.module('quizapp', []);
 
 angular.module('quizapp').factory('quiz', [
   function(){
-    return {
+    var quiz = {
       started: false,
+      simbolica: false,
       propostas: propostas,
       parlamentares: parlamentares,
       current: 0,
@@ -55,6 +56,7 @@ angular.module('quizapp').factory('quiz', [
         this.current++;
       }
     };
+    return quiz;
   }
 ]);
 
@@ -83,7 +85,12 @@ angular.module('quizapp').
     '$scope', 'quiz',
     function($scope, quiz){
       $scope.quiz = quiz;
-      $scope.readout = function(index){
+      $scope.iniciar_simbolica = function(){
+        $scope.readout($scope.quiz.current);
+      };
+      $scope.readout = function(){
+        var simbolica = 'Favoráveis permaneçam como estão, contrários se mániféstem.';
+        if ($scope.quiz.simbolica) {
           responsiveVoice.speak(
             $scope.quiz.propostas[$scope.quiz.current].ementa,
             'Brazilian Portuguese Female',
@@ -93,11 +100,20 @@ angular.module('quizapp').
                 rate :1.5});
             }, rate: 1.2}
           );
+        }
       };
-      var simbolica = 'Favoráveis permaneçam como estão, contrários se mániféstem.';
+
+      $scope.$watch('quiz.simbolica', function(){
+        if ($scope.quiz.simbolica) {
+          $scope.readout();
+        } else {
+          responsiveVoice.cancel();
+        }
+      });
+
       $scope.$watch('quiz.started', function(){
         if ($scope.quiz.started) {
-          $scope.readout($scope.quiz.current);
+          $scope.readout();
         }
       });
       $scope.$watch('quiz.current', function(){
