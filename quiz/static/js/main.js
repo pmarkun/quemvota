@@ -22,4 +22,37 @@ $(document).ready(function () {
 			window.location.href = "/resultado/"+MEUS_VOTOS.join("");
 			}
 	});
+
+
+	if (annyang) {
+	          // Let's define our first command. First the text we expect, and then the function it should call
+	          var commands = {
+	            'pela família meu voto É sim': function() {
+	              $('.btn-concordo:visible').click();
+	            },
+	            'pela família voto É sim': function() {
+	              $('.btn-concordo:visible').click();
+	            },
+	            'meu voto é sim': function() {
+	              $('.btn-concordo:visible').click();
+	            },
+	            'Meu voto é não': function() {
+	              $('.btn-discordo:visible').click();
+	            },
+	            'é golpe': function() {
+	              $('.btn-discordo:visible').click();
+	            }
+	          };
+
+	          // Add our commands to annyang
+	          annyang.setLanguage('pt-BR')
+	          annyang.addCommands(commands);
+	          annyang.debug(true);
+
+	          // Start listening. You can call this here, or attach this call to an event, button, etc.
+	          $("#bigredbtn").click(function (){
+	          	annyang.start();
+	          });
+	          
+	        }
 });

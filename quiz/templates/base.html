@@ -20,34 +20,6 @@
         <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
         <script>
-        if (annyang) {
-          // Let's define our first command. First the text we expect, and then the function it should call
-          var commands = {
-            'pela família meu voto É sim': function() {
-              $('.btn-concordo:visible').click();
-            },
-            'pela família voto É sim': function() {
-              $('.btn-concordo:visible').click();
-            },
-            'meu voto é sim': function() {
-              $('.btn-concordo:visible').click();
-            },
-            'Meu voto é não': function() {
-              $('.btn-discordo:visible').click();
-            },
-            'é golpe': function() {
-              $('.btn-discordo:visible').click();
-            }
-          };
-
-          // Add our commands to annyang
-          annyang.setLanguage('pt-BR')
-          annyang.addCommands(commands);
-          annyang.debug(true);
-
-          // Start listening. You can call this here, or attach this call to an event, button, etc.
-          annyang.start();
-        }
         </script>
     </head>
     <body>
