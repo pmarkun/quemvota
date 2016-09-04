@@ -161,6 +161,12 @@ footer p a {
   padding: 0.66em 1em;
   text-align: center;
 }
+.quiz-top-result .nome {
+  font-size: 1.6em;
+}
+.quiz-top-result .score {
+  font-size: 1.3em;
+}
 
 .quiz-result h2 {
   color: #bec7ef;
@@ -243,5 +249,11 @@ footer {
   .quiz-ui .controle .btn {
     height: 96px;
     width: 96px;
+  }
+  .quiz-top-result .nome {
+    font-size: 2.2em;
+  }
+  .quiz-top-result .score {
+    font-size: 1.8em;
   }
 }
