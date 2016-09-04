@@ -153,6 +153,7 @@ footer p a {
 }
 .quiz-top-result {
   background-color: #bec7ef;
+  padding-bottom: 2em;
 }
 .quiz-top-result h1 {
   font-size: 1.8em;
@@ -183,7 +184,6 @@ footer p a {
   padding-bottom: 0.66em;
 }
 .quiz-result .picture {
-  border-radius: 50%;
   flex-basis: 120px;
   flex-grow: 3;
   text-align: center;
