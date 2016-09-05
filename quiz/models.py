@@ -192,6 +192,10 @@ class Partido(models.Model):
     def __unicode__(self):
         return '%s-%s' % (self.nome, self.numero)
 
+    def __str__(self):
+        return self.nome
+
+
 
 class CasaLegislativa(models.Model):
     """Instituição tipo Senado, Câmara etc
@@ -452,7 +456,7 @@ class Proposicao(models.Model):
     indexacao = models.TextField(blank=True)
     explicacao = models.TextField(blank=True)
     hashtags = models.TextField(blank=True)
-    data_apresentacao = models.DateField(null=True)
+    data_apresentacao = models.DateField(null=True, blank=True)
     situacao = models.TextField(blank=True)
     casa_legislativa = models.ForeignKey(CasaLegislativa, null=True)
     autor_principal = models.TextField(blank=True)
@@ -463,8 +467,11 @@ class Proposicao(models.Model):
     #    related_name='Autor principal')
     autores = models.ManyToManyField(
         Parlamentar,
-        null=True,
+        null=True, blank=True,
         related_name='demais_autores')
+
+    def __str__(self):
+        return "%s %s/%s" % (self.sigla, self.numero, self.ano)
 
     def nome(self):
         return "%s %s/%s" % (self.sigla, self.numero, self.ano)
