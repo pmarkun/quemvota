@@ -43,7 +43,8 @@ def index(request):
 
     parlamentares = [{'nome': parlamentar.nome,
                       'partido': parlamentar.partido.nome,
-                      'votos': list(votos)}
+                      'votos': list(votos),
+                      'image': '/static/media/fotovereadores/' + parlamentar.nome.lower() + '.jpg'}
                      for parlamentar, votos
                      in zip(builder.parlamentares, matriz)
                      if not all(voto == 0.0 for voto in votos)]

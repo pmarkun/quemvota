@@ -4,6 +4,16 @@ var utils = {
       var valueB = vectorB[index];
       return valueA === valueB ? 1: 0;
     }).reduce(function(a,b){ return a+b; });
+  },
+  hash: function(vector){
+    var code = {'0': 'A', '1': 'S', '-1': 'N'};
+    return vector.map(function(voto){ return code[voto]; }).join('');
+  },
+  readhash: function(){
+    var code = {'A': 0, 'S': 1, 'N': -1};
+    return window.location.hash.slice(1).split('').map(function(char){
+      return code[char];
+    });
   }
 };
 
@@ -129,8 +139,15 @@ angular.module('quizapp').
   '$scope', 'quiz',
     function($scope, quiz){
       $scope.quiz = quiz;
+      if (window.location.hash && window.location.hash.length === propostas.length+1){
+        utils.readhash().forEach(function(voto, index){
+          $scope.quiz.vote(index, voto);
+        });
+        $scope.quiz.started = true;
+      }
       $scope.calculateScores = function(){
         var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
+        $scope.hash = utils.hash(uservotes);
         $scope.quiz.parlamentares.forEach(function(parlamentar){
           parlamentar.score = utils.score(uservotes, parlamentar.votos);
         });
