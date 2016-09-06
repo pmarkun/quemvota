@@ -11,8 +11,7 @@ var utils = {
   },
   readhash: function(){
     var code = {'A': 0, 'S': 1, 'N': -1};
-    alert(window.location.hash.slice(1).split("/")[1].split(''));
-    return window.location.hash.slice(1).split("/")[1].split('').map(function(char){
+    return window.location.hash.split("/")[1].split('').map(function(char){
       return code[char];
     });
   }
@@ -62,6 +61,7 @@ angular.module('quizapp').factory('quiz', [
       simbolica: false,
       propostas: propostas,
       parlamentares: parlamentares,
+      automatic: 0,
       current: 0,
       vote: function(index, value){
         this.propostas[index].uservote = value;
@@ -141,28 +141,35 @@ angular.module('quizapp').
   '$scope', 'quiz',
     function($scope, quiz){
       $scope.quiz = quiz;
-      if (window.location.hash && window.location.hash.split('/')[1].length === propostas.length){
-        utils.readhash().forEach(function(voto, index){
-          $scope.quiz.vote(index, voto);
-        });
-        $scope.quiz.started = true;
-      }
+      
       $scope.calculateScores = function(){
         var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
         $scope.hash = utils.hash(uservotes);
         location.hash = '!/'+$scope.hash; //Troca hash
         $('.fb-share-button').attr('data-href', location.href);
-        FB.XFBML.parse();
         $scope.quiz.parlamentares.forEach(function(parlamentar){
           parlamentar.score = utils.score(uservotes, parlamentar.votos);
         });
       };
-      $scope.$watch('quiz.current', function(){
-        if (($scope.quiz.current === $scope.quiz.propostas.length)){
-          $scope.calculateScores();
-          $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
-          window.document.title = 'Você vota mais parecido com '+$scope.sorted[0].nome; + ' (' + $scope.sorted[0].partido + ') - Quem Vota' //hackish para o titulo
 
+      if (window.location.hash && window.location.hash.split('/')[1].length === propostas.length){
+        $scope.quiz.automatic = 1;
+        utils.readhash().forEach(function(voto, index){
+          $scope.quiz.vote(index, voto);
+        });
+        $scope.calculateScores();
+        $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
+        window.document.title = 'Você vota mais parecido com '+$scope.sorted[0].nome; + ' (' + $scope.sorted[0].partido + ') - Quem Vota' //hackish para o titulo
+        $scope.quiz.started = true;
+      }
+      
+
+      $scope.$watch('quiz.current', function(){
+        if (($scope.quiz.current === $scope.quiz.propostas.length) && $scope.quiz.automatic == 0){
+          var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
+          $scope.hash = utils.hash(uservotes);
+          window.location.href = '/#!/'+$scope.hash;
+          window.location.reload();
         }
       });
     }
