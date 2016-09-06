@@ -40,6 +40,7 @@ var commands = {
 };
 
 $(document).ready(function(){
+  annyang = null
   if (annyang) {
     // Add our commands to annyang
     annyang.setLanguage('pt-BR');
