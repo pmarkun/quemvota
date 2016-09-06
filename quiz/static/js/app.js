@@ -149,6 +149,7 @@ angular.module('quizapp').
       $scope.calculateScores = function(){
         var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
         $scope.hash = utils.hash(uservotes);
+        location.hash = $scope.hash; //Troca hash
         $scope.quiz.parlamentares.forEach(function(parlamentar){
           parlamentar.score = utils.score(uservotes, parlamentar.votos);
         });
@@ -157,6 +158,7 @@ angular.module('quizapp').
         if (($scope.quiz.current === $scope.quiz.propostas.length)){
           $scope.calculateScores();
           $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
+          window.document.title = 'Você vota mais parecido com '+$scope.sorted[0].nome; + ' (' + $scope.sorted[0].partido + ') - Quem Vota' //hackish para o titulo
         }
       });
     }
