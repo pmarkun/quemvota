@@ -11,7 +11,8 @@ var utils = {
   },
   readhash: function(){
     var code = {'A': 0, 'S': 1, 'N': -1};
-    return window.location.hash.slice(1).split('').map(function(char){
+    alert(window.location.hash.slice(1).split("/")[1].split(''));
+    return window.location.hash.slice(1).split("/")[1].split('').map(function(char){
       return code[char];
     });
   }
@@ -140,7 +141,7 @@ angular.module('quizapp').
   '$scope', 'quiz',
     function($scope, quiz){
       $scope.quiz = quiz;
-      if (window.location.hash && window.location.hash.length === propostas.length+1){
+      if (window.location.hash && window.location.hash.split('/')[1].length === propostas.length){
         utils.readhash().forEach(function(voto, index){
           $scope.quiz.vote(index, voto);
         });
@@ -149,7 +150,7 @@ angular.module('quizapp').
       $scope.calculateScores = function(){
         var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
         $scope.hash = utils.hash(uservotes);
-        location.hash = $scope.hash; //Troca hash
+        location.hash = '!/'+$scope.hash; //Troca hash
         $scope.quiz.parlamentares.forEach(function(parlamentar){
           parlamentar.score = utils.score(uservotes, parlamentar.votos);
         });
