@@ -151,6 +151,8 @@ angular.module('quizapp').
         var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
         $scope.hash = utils.hash(uservotes);
         location.hash = '!/'+$scope.hash; //Troca hash
+        $('.fb-share-button').attr('data-href', location.href);
+        FB.XFBML.parse();
         $scope.quiz.parlamentares.forEach(function(parlamentar){
           parlamentar.score = utils.score(uservotes, parlamentar.votos);
         });
@@ -160,6 +162,7 @@ angular.module('quizapp').
           $scope.calculateScores();
           $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
           window.document.title = 'Você vota mais parecido com '+$scope.sorted[0].nome; + ' (' + $scope.sorted[0].partido + ') - Quem Vota' //hackish para o titulo
+
         }
       });
     }
