@@ -168,8 +168,9 @@ angular.module('quizapp').
         if (($scope.quiz.current === $scope.quiz.propostas.length) && $scope.quiz.automatic == 0){
           var uservotes = $scope.quiz.propostas.map(function(proposta){ return proposta.uservote; });
           $scope.hash = utils.hash(uservotes);
-          window.location.href = '/#!/'+$scope.hash;
-          window.location.reload();
+          
+          window.location.href = '/?#!/'+$scope.hash;
+          //window.location.reload();
         }
       });
     }
