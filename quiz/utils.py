@@ -7,9 +7,11 @@ class MatrizesDeDadosBuilder:
         self.parlamentares = parlamentares
         self.matriz_votacoes = [[0 for col in range(len(self.parlamentares))] for row in range(len(self.votacoes))]
 
-        self.matriz_presencas = [[0 for col in range(len(self.parlamentares))] for row in range(len(self.votacoes))]
+        #self.matriz_presencas = [[0 for col in range(len(self.parlamentares))] for row in range(len(self.votacoes))]
+        
         # array de partido.nome's, um por parlamentar
         self.partido_do_parlamentar = []
+        
         # chave eh nome do partido, e valor eh VotoPartido
         self._dic_partido_votos = {}
         self._dic_parlamentares_votos = {}  # parlamentar.id => voto.opcao
@@ -47,7 +49,7 @@ class MatrizesDeDadosBuilder:
             ip = -1  # indice parlamentares
             for parlamentar in self.parlamentares:
                 ip += 1
-                self.partido_do_parlamentar.append(parlamentar.partido.nome)
+                
                 if parlamentar.id in self._dic_parlamentares_votos:
                     opcao = self._dic_parlamentares_votos[parlamentar.id]
                     self.matriz_votacoes[ip][iv] = self._opcao_to_double(opcao)
@@ -60,7 +62,7 @@ class MatrizesDeDadosBuilder:
                     self.matriz_presencas[ip][iv] = 0.
         except:
             pass
-        
+
     def _opcao_to_double(self, opcao):
         if opcao == 'SIM':
             return 1.

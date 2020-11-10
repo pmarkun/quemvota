@@ -158,7 +158,7 @@ angular.module('quizapp').
           $scope.quiz.vote(index, voto);
         });
         $scope.calculateScores();
-        $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse().slice(0, 30);
+        $scope.sorted = _.sortBy($scope.quiz.parlamentares, 'score').reverse();
         window.document.title = 'Você vota mais parecido com '+$scope.sorted[0].nome; + ' (' + $scope.sorted[0].partido + ') - Quem Vota' //hackish para o titulo
         $scope.quiz.started = true;
       }
