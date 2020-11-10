@@ -83,7 +83,7 @@
       <tbody>
         <tr class="quiz-result-parlamentar" ng-repeat="parlamentar in sorted">
           <td class="partido">{{ parlamentar.partido }}</td>
-          <td class="nome">{{ parlamentar.nome }}</td>
+          <td class="nome"><a href="{{ parlamentar.url }}" target="_blank">{{ parlamentar.nome }} - {{parlamentar.numero}}</a></td>
           <td class="score">{{ parlamentar.score }}/{{ quiz.propostas.length }}</td>
         </tr>
       </tbody>

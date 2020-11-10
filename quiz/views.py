@@ -38,6 +38,8 @@ def index(request):
 
     parlamentares = [{'nome': parlamentar.nome,
                       'partido': parlamentar.partido.nome,
+                      'numero' : parlamentar.numero,
+                      'url' : parlamentar.url,
                       'votos': list(votos),
                       'image': '/static/media/fotovereadores/' + parlamentar.nome.lower() + '.jpg'}
                      for parlamentar, votos

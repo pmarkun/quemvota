@@ -424,6 +424,8 @@ class Parlamentar(models.Model):
     foto = models.ImageField(upload_to='uploads/', default='/static/profile.png')
     situacao = models.CharField(max_length=10, choices=SITUACOES, default='P')
     email = models.CharField(max_length=100, blank=True)
+    numero = models.IntegerField(blank=True, null=True)
+    url = models.URLField(blank=True,null=True)
 
     def __str__(self):
         return '%s - %s' % (self.nome, self.partido.nome)
