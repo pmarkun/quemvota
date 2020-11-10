@@ -425,7 +425,7 @@ class Parlamentar(models.Model):
     situacao = models.CharField(max_length=10, choices=SITUACOES, default='P')
     email = models.CharField(max_length=100, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s - %s' % (self.nome, self.partido.nome)
 
 
@@ -542,6 +542,9 @@ class Votacao(models.Model):
             return "[%s] %s" % (self.data, self.descricao)
         else:
             return self.descricao
+        
+    def __str__(self):
+        return '{} - {}'.format(self.proposicao,self.data)
 
 
 class Voto(models.Model):
