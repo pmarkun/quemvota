@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from quiz.models import Proposicao, Parlamentar
+from quiz.models import Proposicao, Parlamentar, CasaLegislativa, Votacao
 
 class ProposicaoAdmin(admin.ModelAdmin):
     list_display = ('id_prop', 'ementa')
@@ -16,4 +16,5 @@ class ParlamentarAdmin(admin.ModelAdmin):
 
 admin.site.register(Proposicao, ProposicaoAdmin)
 admin.site.register(Parlamentar, ParlamentarAdmin)
-
+admin.site.register(CasaLegislativa)
+admin.site.register(Votacao)

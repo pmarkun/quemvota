@@ -268,7 +268,7 @@ class ChefeExecutivo(models.Model):
 
     nome = models.CharField(max_length=100)
     genero = models.CharField(max_length=10, choices=GENEROS, blank=True)
-    partido = models.ForeignKey(Partido)
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     mandato_ano_inicio = models.IntegerField()
     mandato_ano_fim = models.IntegerField()
     casas_legislativas = models.ManyToManyField(CasaLegislativa)
@@ -418,8 +418,8 @@ class Parlamentar(models.Model):
     id_parlamentar = models.CharField(max_length=100, blank=True)
     nome = models.CharField(max_length=100)
     genero = models.CharField(max_length=10, choices=GENEROS, blank=True)
-    casa_legislativa = models.ForeignKey(CasaLegislativa, null=True)
-    partido = models.ForeignKey(Partido)
+    casa_legislativa = models.ForeignKey(CasaLegislativa, null=True, on_delete=models.CASCADE)
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     localidade = models.CharField(max_length=100, blank=True)
     foto = models.ImageField(upload_to='uploads/', default='/static/profile.png')
     situacao = models.CharField(max_length=10, choices=SITUACOES, default='P')
@@ -458,7 +458,7 @@ class Proposicao(models.Model):
     hashtags = models.TextField(blank=True)
     data_apresentacao = models.DateField(null=True, blank=True)
     situacao = models.TextField(blank=True)
-    casa_legislativa = models.ForeignKey(CasaLegislativa, null=True)
+    casa_legislativa = models.ForeignKey(CasaLegislativa, null=True, on_delete=models.CASCADE)
     autor_principal = models.TextField(blank=True)
     # TODO
     # autor_principal = models.ForeignKey(
@@ -499,7 +499,7 @@ class Votacao(models.Model):
     descricao = models.TextField(blank=True)
     data = models.DateField(blank=True, null=True)
     resultado = models.TextField(blank=True)
-    proposicao = models.ForeignKey(Proposicao, null=True)
+    proposicao = models.ForeignKey(Proposicao, null=True, on_delete=models.CASCADE)
 
     def votos(self):
         """Retorna os votos da votação (depende do banco de dados)"""
@@ -553,8 +553,8 @@ class Voto(models.Model):
                 (sim, não, abstenção, obstrução, não votou)
     """
 
-    votacao = models.ForeignKey(Votacao)
-    parlamentar = models.ForeignKey(Parlamentar)
+    votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE)
+    parlamentar = models.ForeignKey(Parlamentar, on_delete=models.CASCADE)
     opcao = models.CharField(max_length=10, choices=OPCOES)
 
     def __unicode__(self):
