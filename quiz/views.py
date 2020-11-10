@@ -5,7 +5,7 @@ from itertools import groupby, chain
 
 from django.shortcuts import render_to_response
 
-from .models import Proposicao, CasaLegislativa, Votacao, Voto
+from .models import Proposicao, CasaLegislativa, Votacao, Voto, Parlamentar
 from .utils import MatrizesDeDadosBuilder
 from .forms import CandidatoForm
 
@@ -33,7 +33,7 @@ def index(request):
 
 
     cmsp = CasaLegislativa.objects.get(nome_curto='cmsp')
-    builder = MatrizesDeDadosBuilder(votacoes, cmsp.partidos(), cmsp.parlamentares())
+    builder = MatrizesDeDadosBuilder(votacoes, cmsp.partidos(), Parlamentar.objects.filter(situacao='C'))
     matriz = builder.gera_matrizes()
 
     parlamentares = [{'nome': parlamentar.nome,
