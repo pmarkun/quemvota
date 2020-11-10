@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
-import numpy
-
 class MatrizesDeDadosBuilder:
 
     def __init__(self, votacoes, partidos, parlamentares):
         self.votacoes = votacoes
         self.partidos = partidos
         self.parlamentares = parlamentares
-        self.matriz_votacoes = numpy.zeros(
-            (len(self.parlamentares), len(self.votacoes)))
-        self.matriz_presencas = numpy.zeros(
-            (len(self.parlamentares), len(self.votacoes)))
+        self.matriz_votacoes = [[0 for col in range(len(self.parlamentares))] for row in range(len(self.votacoes))]
+
+        self.matriz_presencas = [[0 for col in range(len(self.parlamentares))] for row in range(len(self.votacoes))]
         # array de partido.nome's, um por parlamentar
         self.partido_do_parlamentar = []
         # chave eh nome do partido, e valor eh VotoPartido
@@ -46,21 +43,24 @@ class MatrizesDeDadosBuilder:
             self._dic_parlamentares_votos[voto.parlamentar.id] = voto.opcao
 
     def _preenche_matrizes(self, votacao, iv):
-        ip = -1  # indice parlamentares
-        for parlamentar in self.parlamentares:
-            ip += 1
-            self.partido_do_parlamentar.append(parlamentar.partido.nome)
-            if parlamentar.id in self._dic_parlamentares_votos:
-                opcao = self._dic_parlamentares_votos[parlamentar.id]
-                self.matriz_votacoes[ip][iv] = self._opcao_to_double(opcao)
-                if (opcao == "AUSENTE"):
-                    self.matriz_presencas[ip][iv] = 0.
+        try:
+            ip = -1  # indice parlamentares
+            for parlamentar in self.parlamentares:
+                ip += 1
+                self.partido_do_parlamentar.append(parlamentar.partido.nome)
+                if parlamentar.id in self._dic_parlamentares_votos:
+                    opcao = self._dic_parlamentares_votos[parlamentar.id]
+                    self.matriz_votacoes[ip][iv] = self._opcao_to_double(opcao)
+                    if (opcao == "AUSENTE"):
+                        self.matriz_presencas[ip][iv] = 0.
+                    else:
+                        self.matriz_presencas[ip][iv] = 1.
                 else:
-                    self.matriz_presencas[ip][iv] = 1.
-            else:
-                self.matriz_votacoes[ip][iv] = 0.
-                self.matriz_presencas[ip][iv] = 0.
-
+                    self.matriz_votacoes[ip][iv] = 0.
+                    self.matriz_presencas[ip][iv] = 0.
+        except:
+            pass
+        
     def _opcao_to_double(self, opcao):
         if opcao == 'SIM':
             return 1.
